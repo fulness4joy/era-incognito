@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://p0mn4mdsomis"]
+
+[ext_resource type="PackedScene" uid="uid://ct8rm1ruvwlso" path="res://assets/models/west_home_1.glb" id="1_03obx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3kfo"]
+size = Vector3(30.1641, 15.1714, 24.5726)
+
+[node name="west_home" type="StaticBody3D"]
+
+[node name="west_home_1" parent="." instance=ExtResource("1_03obx")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -0.313748, 12.4708, 1.67339)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.807861, 7.58607, -10.7342)
+shape = SubResource("BoxShape3D_t3kfo")

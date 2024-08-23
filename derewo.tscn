@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ditwqsnu27afx"]
+
+[ext_resource type="PackedScene" uid="uid://bkuh8l3d4ty28" path="res://assets/models/derewo.glb" id="1_gu3ko"]
+
+[node name="derewo" instance=ExtResource("1_gu3ko")]
+
+[node name="Sphere" parent="." index="0"]
+transform = Transform3D(1.84972, 0, 0, 0, 1.84972, 0, 0, 0, 1.84972, -0.0759533, 8.48625, -0.0102377)

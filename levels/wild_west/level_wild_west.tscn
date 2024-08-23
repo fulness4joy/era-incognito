@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://bp8pw4tckptw5"]
+
+[ext_resource type="PackedScene" uid="uid://bfuyrelc808ay" path="res://player/hero.tscn" id="1_s54ue"]
+[ext_resource type="PackedScene" uid="uid://bo6r0dre3vjhv" path="res://enemy_indian.tscn" id="2_c4t1a"]
+[ext_resource type="Script" path="res://Label.gd" id="3_w4k28"]
+[ext_resource type="PackedScene" uid="uid://p0mn4mdsomis" path="res://west_home.tscn" id="4_83h40"]
+[ext_resource type="PackedScene" uid="uid://bfm5tisqx0sup" path="res://stone.tscn" id="5_m2je2"]
+[ext_resource type="PackedScene" uid="uid://dtv5yh5vmdsjk" path="res://home2.tscn" id="6_3nbc5"]
+[ext_resource type="PackedScene" uid="uid://24dfruencnqf" path="res://cactus.tscn" id="7_vwxhe"]
+[ext_resource type="PackedScene" uid="uid://gf8eb1wbh5ji" path="res://assets/models/BIGHOME.glb" id="8_jj7c5"]
+[ext_resource type="PackedScene" uid="uid://c5y63gjnnfbkq" path="res://assets/models/BIGHOUSE2.glb" id="9_l7grl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pb1r"]
+sky_top_color = Color(0.50288, 0.556846, 0.771663, 1)
+sky_horizon_color = Color(0.783879, 0.620774, 0.449864, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fl0mq"]
+sky_material = SubResource("ProceduralSkyMaterial_8pb1r")
+
+[sub_resource type="Environment" id="Environment_sngpt"]
+background_mode = 2
+sky = SubResource("Sky_fl0mq")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.647219, 0.532219, 0.318148, 1)
+fog_density = 0.005
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aa5o"]
+albedo_color = Color(0.701988, 0.479927, 0.00889302, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ru3x6"]
+material = SubResource("StandardMaterial3D_3aa5o")
+size = Vector3(200, 0.1, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy1ap"]
+size = Vector3(200, 0.1, 200)
+
+[node name="world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sngpt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 8.55727, -5.14629)
+shadow_enabled = true
+
+[node name="platform" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129854, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="platform"]
+mesh = SubResource("BoxMesh_ru3x6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform"]
+shape = SubResource("BoxShape3D_cy1ap")
+
+[node name="hero" parent="." instance=ExtResource("1_s54ue")]
+
+[node name="enemy_indian" parent="." instance=ExtResource("2_c4t1a")]
+transform = Transform3D(-0.856663, 0, -0.515876, 0, 1, 0, 0.515876, 0, -0.856663, 18.2848, 0.477701, 29.9709)
+
+[node name="enemy_indian2" parent="." instance=ExtResource("2_c4t1a")]
+transform = Transform3D(0.679441, 0, 0.73373, 0, 1, 0, -0.73373, 0, 0.679441, -15.8734, 0.179854, 5.8734)
+path_length = 6
+
+[node name="enemy_indian3" parent="." instance=ExtResource("2_c4t1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9622, 0.179854, -6.10413)
+path_length = 20
+
+[node name="enemy_indian4" parent="." instance=ExtResource("2_c4t1a")]
+transform = Transform3D(0.0588883, 0, 0.998265, 0, 1, 0, -0.998265, 0, 0.0588883, -64.8961, 0.179854, -7.54494)
+path_length = 3
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+script = ExtResource("3_w4k28")
+
+[node name="west_home" parent="." instance=ExtResource("4_83h40")]
+transform = Transform3D(-0.974401, 0, -0.224815, 0, 1, 0, 0.224815, 0, -0.974401, 22.6758, 0.179853, 51.6683)
+
+[node name="stone" parent="." instance=ExtResource("5_m2je2")]
+transform = Transform3D(0.612431, 0, -0.0625648, 0, 0.615618, 0, 0.0625648, 0, 0.612431, 67.447, 0.179853, -60.344)
+
+[node name="stone2" parent="." instance=ExtResource("5_m2je2")]
+transform = Transform3D(0.917018, 0, -0.398845, 0, 1, 0, 0.398845, 0, 0.917018, 74.5005, 0.179853, -66.6398)
+
+[node name="stone3" parent="." instance=ExtResource("5_m2je2")]
+transform = Transform3D(1.25607, 0, 0.342351, 0, 1.30189, 0, -0.342351, 0, 1.25607, 65.6351, 0.179853, -72.1027)
+
+[node name="home2" parent="." instance=ExtResource("6_3nbc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2731, 0.179853, -30.647)
+
+[node name="home3" parent="." instance=ExtResource("6_3nbc5")]
+transform = Transform3D(-0.99998, 0, -0.00631796, 0, 1, 0, 0.00631796, 0, -0.99998, 56.3746, 0.179853, -7.04599)
+
+[node name="cactus" parent="." instance=ExtResource("7_vwxhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4741, 0.179853, -65.954)
+
+[node name="cactus2" parent="." instance=ExtResource("7_vwxhe")]
+transform = Transform3D(0.743156, 0, 0.669118, 0, 1, 0, -0.669118, 0, 0.743156, -20.0198, 0.179853, -75.5186)
+
+[node name="cactus3" parent="." instance=ExtResource("7_vwxhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4789, 0.179853, -75.07)
+
+[node name="BIGHOME" parent="." instance=ExtResource("8_jj7c5")]
+transform = Transform3D(3.80627, 0, 1.09963, 0, 3.96193, 0, -1.09963, 0, 3.80627, -28.4309, 0.179853, 17.0799)
+
+[node name="BIGHOUSE2" parent="." instance=ExtResource("9_l7grl")]
+transform = Transform3D(-3.01521, 0, 0.759382, 0, 3.10936, 0, -0.759382, 0, -3.01521, 62.6017, 0.179857, 19.6505)

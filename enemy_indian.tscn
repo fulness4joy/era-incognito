@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo6r0dre3vjhv"]
+
+[ext_resource type="PackedScene" uid="uid://d0ftmd1yjbdld" path="res://assets/models/indian.glb" id="1_bbfkh"]
+[ext_resource type="Script" path="res://enemy_indian.gd" id="1_ysiuw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0sj4r"]
+height = 2.64772
+
+[node name="enemy_indian" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_ysiuw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2437, 0)
+shape = SubResource("CapsuleShape3D_0sj4r")
+
+[node name="indian" parent="." instance=ExtResource("1_bbfkh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.38101, 0)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+depth = 5.0
+polygon = PackedVector2Array(5, -10, 20, 30, -20, 30, -5, -10)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

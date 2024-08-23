@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfuyrelc808ay"]
+
+[ext_resource type="Script" path="res://player/hero.gd" id="1_e44i6"]
+[ext_resource type="PackedScene" uid="uid://dehgjif5xvetq" path="res://assets/models/hero.glb" id="2_d5jqr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22kh2"]
+radius = 0.848396
+height = 3.56156
+
+[node name="hero" type="CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.48739, -77.1131)
+script = ExtResource("1_e44i6")
+metadata/_edit_group_ = true
+
+[node name="hero" parent="." instance=ExtResource("2_d5jqr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="hero/Armature" index="0"]
+bones/1/position = Vector3(-0.147147, -0.0294345, 1.30537)
+bones/1/rotation = Quaternion(0.490957, -0.475441, -0.515685, 0.516707)
+bones/2/position = Vector3(0.135092, -0.0294345, 1.30537)
+bones/2/rotation = Quaternion(-0.507177, 0.507529, 0.499797, -0.485169)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-0.460742, -0.242722, 0.00949692)
+bones/3/rotation = Quaternion(0.706368, -0.0864287, -0.695575, -0.0987406)
+bones/3/scale = Vector3(1.00001, 1, 1)
+bones/4/rotation = Quaternion(-0.0147075, -0.00592741, 0.691748, 0.721965)
+bones/5/rotation = Quaternion(0.708197, 0.100284, -0.693713, 0.0846339)
+bones/5/scale = Vector3(1.00001, 1, 1)
+bones/6/rotation = Quaternion(0.173117, -0.185248, 0.669898, 0.697818)
+bones/7/position = Vector3(0.0238581, 0.384505, 1.64805)
+bones/7/rotation = Quaternion(-0.5, 0.5, 0.5, -0.5)
+bones/8/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
+
+[node name="Cube_002" parent="hero/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.0638904, 0, 0, 0, 0.356278, 0, 0, 0, -0.119193, 0.00745069, 0.135141, 1.77745)
+
+[node name="AnimationPlayer" parent="hero" index="2"]
+autoplay = "idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85421, 0)
+shape = SubResource("CapsuleShape3D_22kh2")
+
+[node name="third_p_camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.865151, 0.501511, 0, -0.501511, 0.865151, -0.0226776, 4.73866, 5.1173)
+current = true
+
+[node name="first_p_camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13263e-07, 2.08236, -1.29557)
+
+[node name="ray_bullet_rifle" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.000996343, 1.64927, -3.31509)
+target_position = Vector3(0, 0, 100)
+
+[node name="ray_bullet_gun" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000497546, 1.62855, -2.72483)
+target_position = Vector3(0, 0, -1)
+
+[node name="CameraFront" type="Camera3D" parent="."]
+transform = Transform3D(-0.970814, 0.0409998, -0.236302, 0.0360269, 0.99903, 0.0253258, 0.237111, 0.0160734, -0.97135, -5.78181, 1.63821, -22.9282)
+
+[editable path="hero"]

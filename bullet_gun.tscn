@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dettmwga32uo2"]
+
+[ext_resource type="Script" path="res://bullet_gun.gd" id="1_1d8nh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqn4e"]
+albedo_color = Color(0.875, 0.54789, 0.0375977, 1)
+metallic = 1.0
+roughness = 0.23
+emission = Color(0.757767, 0.340968, 0.125881, 1)
+emission_energy_multiplier = 8.19
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4jvxg"]
+material = SubResource("StandardMaterial3D_nqn4e")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jlm7l"]
+
+[node name="bullet_gun" type="RigidBody3D"]
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_1d8nh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_4jvxg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_jlm7l")

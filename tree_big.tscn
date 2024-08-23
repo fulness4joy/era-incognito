@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3csjtv1sgupg"]
+
+[ext_resource type="PackedScene" uid="uid://ce7k1b6jb0y0l" path="res://assets/models/tree.glb" id="1_ewrlp"]
+
+[node name="tree" instance=ExtResource("1_ewrlp")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+
+[node name="Cylinder_002" parent="." index="0"]
+transform = Transform3D(-0.172974, 0.298539, 0.226244, -0.157571, -0.284072, 0.254375, 0.339829, 0.0202399, 0.233107, 0.9578, -3.83, -0.88555)
+
+[node name="Icosphere" parent="." index="1"]
+transform = Transform3D(2.7191, 0, 0, 0, 1.90104, 0, 0, 0, 2.24397, -3.62752, -8.07051, 0.540743)
+
+[node name="Icosphere_001" parent="." index="2"]
+transform = Transform3D(1.93738, -0.365864, 0.00855847, 0.521156, 1.34584, -0.184952, 0.0484922, 0.153147, 1.64578, 1.30307, -8.15416, -0.39916)
+
+[node name="Icosphere_002" parent="." index="3"]
+transform = Transform3D(1.53013, -0.360506, 0.00794173, 0.411605, 1.32613, -0.171624, 0.0382989, 0.150904, 1.52718, -0.417907, -7.43001, -0.37603)
+
+[node name="Icosphere_003" parent="." index="4"]
+transform = Transform3D(1.53013, -0.360506, 0.00794173, 0.411605, 1.32613, -0.171624, 0.0382989, 0.150904, 1.52718, 2.51873, -5.92607, -0.601357)
+
+[node name="Icosphere_004" parent="." index="5"]
+transform = Transform3D(1.53013, -0.360506, 0.00794173, 0.411605, 1.32613, -0.171624, 0.0382989, 0.150904, 1.52718, -0.796815, -7.35527, 1.53054)
+
+[node name="Icosphere_005" parent="." index="6"]
+transform = Transform3D(1.1209, -0.211675, 0.00495161, 0.301521, 0.778653, -0.107006, 0.0280558, 0.0886052, 0.952189, -2.00805, -6.97685, -1.36819)
+
+[node name="Icosphere_006" parent="." index="7"]
+transform = Transform3D(1.1209, -0.211675, 0.00495161, 0.301521, 0.778653, -0.107006, 0.0280558, 0.0886052, 0.952189, 1.09452, -6.8017, -1.6713)
+
+[node name="Icosphere_007" parent="." index="8"]
+transform = Transform3D(1.1209, -0.211675, 0.00495161, 0.301521, 0.778653, -0.107006, 0.0280558, 0.0886052, 0.952189, 0.907877, -6.9398, 0.640714)
+
+[node name="Icosphere_008" parent="." index="9"]
+transform = Transform3D(1.53013, -0.360506, 0.00794173, 0.411605, 1.32613, -0.171624, 0.0382989, 0.150904, 1.52718, 2.8987, -7.68145, 0.591978)
+
+[node name="Icosphere_009" parent="." index="10"]
+transform = Transform3D(1.1209, -0.211675, 0.00495161, 0.301521, 0.778653, -0.107006, 0.0280558, 0.0886052, 0.952189, -3.13768, -6.69383, 0.601707)
