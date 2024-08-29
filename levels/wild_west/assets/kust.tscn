@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctwxjhwb52qle"]
 
-[ext_resource type="PackedScene" uid="uid://di523mfa4uf13" path="res://assets/models/KUST.glb" id="1_1ehfm"]
+[ext_resource type="PackedScene" uid="uid://di523mfa4uf13" path="res://assets/models/KUST.glb" id="1_oju0r"]
 
-[node name="KUST" instance=ExtResource("1_1ehfm")]
+[node name="KUST" instance=ExtResource("1_oju0r")]
 
 [node name="Icosphere_002" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159197, 1.68559, 0.563603)

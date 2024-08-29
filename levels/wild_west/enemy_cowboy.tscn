@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo6r0dre3vjhv"]
+[gd_scene load_steps=4 format=3 uid="uid://835dl58p0rm3"]
 
-[ext_resource type="PackedScene" uid="uid://d0ftmd1yjbdld" path="res://assets/models/indian.glb" id="1_bbfkh"]
-[ext_resource type="Script" path="res://enemy_indian.gd" id="1_ysiuw"]
+[ext_resource type="Script" path="res://enemy_attack_pro.gd" id="1_qul58"]
+[ext_resource type="PackedScene" uid="uid://emhxf83o412t" path="res://assets/models/enemy_gun.glb" id="2_lvjfx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0sj4r"]
 height = 2.64772
 
-[node name="enemy_indian" type="CharacterBody3D" groups=["enemy"]]
-script = ExtResource("1_ysiuw")
+[node name="enemy_cowboy" type="CharacterBody3D" groups=["boss", "enemy"]]
+script = ExtResource("1_qul58")
+
+[node name="enemy_gun" parent="." groups=["boss"] instance=ExtResource("2_lvjfx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2437, 0)
 shape = SubResource("CapsuleShape3D_0sj4r")
-
-[node name="indian" parent="." instance=ExtResource("1_bbfkh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.38101, 0)

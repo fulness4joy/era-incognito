@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3csjtv1sgupg"]
 
-[ext_resource type="PackedScene" uid="uid://ce7k1b6jb0y0l" path="res://assets/models/tree.glb" id="1_ewrlp"]
+[ext_resource type="PackedScene" uid="uid://ce7k1b6jb0y0l" path="res://assets/models/tree.glb" id="1_dgo03"]
 
-[node name="tree" instance=ExtResource("1_ewrlp")]
+[node name="tree" instance=ExtResource("1_dgo03")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 
 [node name="Cylinder_002" parent="." index="0"]
