@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv18uihrm6h4h"]
-
-[ext_resource type="PackedScene" uid="uid://ba17u6qjdlx4w" path="res://assets/models/bush.glb" id="1_vainm"]
-
-[node name="bush" instance=ExtResource("1_vainm")]

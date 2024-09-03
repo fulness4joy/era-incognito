@@ -57,6 +57,9 @@ func _input(event):
 		else: 
 			%third_p_camera.current = true
 			
+	if Input.is_action_just_pressed("front_view"):
+		%CameraFront.current = true
+			
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * SPEED_ROTATE)
 		if %first_p_camera.current == true:
