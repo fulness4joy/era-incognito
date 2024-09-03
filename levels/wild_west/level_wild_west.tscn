@@ -132,8 +132,8 @@ transform = Transform3D(-3.01521, 0, 0.759382, 0, 3.10936, 0, -0.759382, 0, -3.0
 
 [node name="fps" parent="." instance=ExtResource("3_sxd3w")]
 
-[node name="enemy_indian5" parent="." instance=ExtResource("10_5rrao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0584, 0.179855, -47.5094)
+[node name="enemy_cowboy" parent="." instance=ExtResource("10_5rrao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75013, 0.179854, -49.5365)
 
 [editable path="hero"]
 [editable path="hero/hero"]

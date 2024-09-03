@@ -2,8 +2,10 @@ extends CharacterBody3D
 class_name Enemy
 
 
-const SPEED = 5.0
+const SPEED = 300.0
 const JUMP_VELOCITY = 4.5
+
+const SPEED_ROTATE = 5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -11,9 +13,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var path_length = 10
 @onready var start_pos = position
 
+@onready var start_angle = rotation.y
+var current_angle = 0
 var is_rotate = false
-var rotate_value = 0
-var rotate_angle = 0 
 
 var hp = 3
 
@@ -37,24 +39,29 @@ func state_idle(delta):
 	velocity.y = 0
 	
 func state_patrol(delta):
-	var direction = (transform.basis * Vector3(0, 0, -SPEED * delta)).normalized()
-	if position.distance_to(start_pos) >= path_length / 2:
+	var direction = (transform.basis * Vector3.FORWARD).normalized()
+	if start_pos.distance_to(position) >= path_length / 2:
+		direction = 0 
 		is_rotate = true
-		
+	
 	if is_rotate == true:
-		rotate_value = SPEED * delta
-		rotate_y(rotate_value)
-		rotate_angle += rotate_value
+		rotate_y(SPEED_ROTATE * delta)
+		#print(rotation.y, rotation_degrees.y)
+		current_angle += SPEED_ROTATE * delta
 		
-		if rotate_angle >= deg_to_rad(180):
+		if current_angle >= PI:
 			is_rotate = false
-			rotate_angle = 0
-		else:
-			direction = 0
-			
+			current_angle = 0
+			direction = (transform.basis * Vector3.FORWARD).normalized()
+			rotation.y = start_angle + PI
+			start_angle = rotation.y
+
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED * delta
+		velocity.z = direction.z * SPEED * delta
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 func state_attack(delta):
 	
@@ -62,8 +69,8 @@ func state_attack(delta):
 	
 	var direction = (transform.basis * Vector3(0, 0, -SPEED * delta)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED * delta
+		velocity.z = direction.z * SPEED * delta
 	
 func move_character(delta):
 	move_and_slide()
@@ -80,11 +87,12 @@ func damage(value=1):
 	hp -= value
 	
 	if hp <= 0:
-		character_die.emit(self)
-		
-	
-func die():
-	queue_free()
+		character_die.emit()
+		queue_free()
+		#die()
+	#
+#func die():
+	#queue_free()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "hero":

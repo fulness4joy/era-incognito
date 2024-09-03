@@ -6,11 +6,11 @@ func _ready() -> void:
 	var boss = get_tree().get_first_node_in_group("boss")
 	if boss:
 		print("boss")
-		boss.character_die.connect(_on_enemy_died)
+		boss.character_die.connect(_on_boss_died)
 
-func _on_enemy_died(enemy):
-	enemy.die()
-	
+func _on_boss_died():
+	#enemy.die()
+	print("Boss die!!!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

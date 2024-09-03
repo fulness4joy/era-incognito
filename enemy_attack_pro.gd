@@ -25,10 +25,10 @@ func state_attack(delta):
 	
 	var direction = (transform.basis * Vector3(0, 0, -SPEED * delta)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED * delta
+		velocity.z = direction.z * SPEED * delta
 
 func state_super_attack(delta):
-	print("SUPER attack!")
+	#print("SUPER attack!")
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
