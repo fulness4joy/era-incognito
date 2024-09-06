@@ -10,5 +10,3 @@
 - **Expansive World**: Traverse through fog-covered lands and discover new territories.
 - **Mythical Creatures**: Encounter legendary beings that guard the secrets of this world.
 - **Ancient Mysteries**: Solve puzzles and unlock the history of the forgotten era.
-
-## Installation

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfuyrelc808ay"]
+[gd_scene load_steps=8 format=3 uid="uid://bfuyrelc808ay"]
 
 [ext_resource type="Script" path="res://player/hero.gd" id="1_e44i6"]
 [ext_resource type="PackedScene" uid="uid://dehgjif5xvetq" path="res://assets/models/hero.glb" id="2_d5jqr"]
@@ -6,6 +6,70 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22kh2"]
 radius = 0.848396
 height = 3.56156
+
+[sub_resource type="Animation" id="Animation_mgv6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero/Armature/Skeleton3D/hat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("first_p_camera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.13263e-07, 2.08236, -1.29557)]
+}
+
+[sub_resource type="Animation" id="Animation_mxxdk"]
+resource_name = "hut_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero/Armature/Skeleton3D/hat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m63iu"]
+resource_name = "walking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("first_p_camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.13263e-07, 2.08236, -1.29557), Vector3(0, 2.2, -1.296), Vector3(1.13263e-07, 2.08236, -1.29557)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjtpi"]
+_data = {
+"RESET": SubResource("Animation_mgv6o"),
+"hut_jump": SubResource("Animation_mxxdk"),
+"walking": SubResource("Animation_m63iu")
+}
 
 [node name="hero" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.487, 0)
@@ -16,26 +80,31 @@ metadata/_edit_group_ = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="hero/Armature" index="0"]
-bones/1/position = Vector3(-0.147147, -0.0294345, 1.30537)
-bones/1/rotation = Quaternion(0.490957, -0.475441, -0.515685, 0.516707)
-bones/2/position = Vector3(0.135092, -0.0294345, 1.30537)
-bones/2/rotation = Quaternion(-0.507177, 0.507529, 0.499797, -0.485169)
+bones/1/position = Vector3(-0.147147, 0.281532, 1.7961)
+bones/1/rotation = Quaternion(0.505076, -0.489594, -0.501865, 0.503317)
+bones/2/position = Vector3(0.164718, 0.313643, 1.40855)
+bones/2/rotation = Quaternion(-0.445082, 0.556705, 0.563763, -0.417317)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(-0.460742, -0.242722, 0.00949692)
 bones/3/rotation = Quaternion(0.706368, -0.0864287, -0.695575, -0.0987406)
 bones/3/scale = Vector3(1.00001, 1, 1)
 bones/4/rotation = Quaternion(-0.0147075, -0.00592741, 0.691748, 0.721965)
+bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.708197, 0.100284, -0.693713, 0.0846339)
-bones/5/scale = Vector3(1.00001, 1, 1)
 bones/6/rotation = Quaternion(0.173117, -0.185248, 0.669898, 0.697818)
-bones/7/position = Vector3(0.0238581, 0.384505, 1.64805)
-bones/7/rotation = Quaternion(-0.5, 0.5, 0.5, -0.5)
+bones/7/position = Vector3(-0.836781, -0.11326, -0.114852)
+bones/7/rotation = Quaternion(-0.707107, 2.51215e-15, 0.707107, 6.06011e-08)
+bones/9/position = Vector3(-0.0210483, 0.52151, 1.9397)
+bones/9/rotation = Quaternion(-0.662085, 0.248282, 0.248282, -0.662085)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.00251392, 0.936305, -0.00670399, -0.351114)
+bones/10/scale = Vector3(0.0587034, 0.0587034, 0.0587034)
 
-[node name="Cube_002" parent="hero/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.0638904, 0, 0, 0, 0.356278, 0, 0, 0, -0.119193, 0.00745069, 0.135141, 1.77745)
+[node name="gun" parent="hero/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.0638904, 0, 1.02152e-08, -5.4756e-09, -3.0534e-08, 0.119193, 0, 0.356278, 1.02152e-08, -0.853188, -0.242656, -0.364216)
 
-[node name="Cylinder" parent="hero/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-3.72529e-09, 0.00093476, 0.0652725, -1.43774e-11, 0.0652725, -0.00093476, -0.0652792, -5.82077e-11, 0, 0.207243, 1.77439, -1.38131)
+[node name="rifle" parent="hero/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.0587034, 9.02219e-10, -3.72529e-09, -7.45058e-09, 0.000840571, 0.0586974, -5.49713e-10, 0.0586974, -0.000840572, -0.0219774, 0.559523, 3.54678)
 
 [node name="AnimationPlayer" parent="hero" index="2"]
 autoplay = "idle"
@@ -46,7 +115,7 @@ shape = SubResource("CapsuleShape3D_22kh2")
 
 [node name="third_p_camera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.865151, 0.501511, 0, -0.501511, 0.865151, -0.0226776, 4.73866, 5.1173)
+transform = Transform3D(1, -2.90159e-08, -1.05222e-08, 3.03802e-08, 0.985512, 0.169608, 5.44846e-09, -0.169608, 0.985512, -0.0226778, 6.30131, 8.53777)
 current = true
 
 [node name="first_p_camera" type="Camera3D" parent="."]
@@ -66,5 +135,10 @@ target_position = Vector3(0, 0, -1)
 [node name="CameraFront" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-0.970814, 0.0409998, -0.236302, 0.0360269, 0.99903, 0.0253258, 0.237111, 0.0160734, -0.97135, -5.78181, 3.36206, -12.3275)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hjtpi")
+}
 
 [editable path="hero"]
