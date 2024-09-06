@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm0vmnduhog3w"]
+
+[ext_resource type="Script" path="res://sparks.gd" id="1_sxpyk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q6jkf"]
+radial_velocity_min = -20.0
+radial_velocity_max = 20.0
+scale_min = 0.1
+scale_max = 0.3
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apbii"]
+emission_enabled = true
+emission = Color(0.968418, 0.854341, 0.0383919, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_d1bjt"]
+material = SubResource("StandardMaterial3D_apbii")
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.43401, -56.6178)
+emitting = false
+amount = 30
+one_shot = true
+speed_scale = 3.21
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q6jkf")
+draw_pass_1 = SubResource("SphereMesh_d1bjt")
+script = ExtResource("1_sxpyk")

@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://bftafavsj3rq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k18a6"]
+size = Vector3(5, 7, 5)
+
+[sub_resource type="Curve" id="Curve_f7wp8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mgfmh"]
+curve = SubResource("Curve_f7wp8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ooy6"]
+emission_shape = 1
+emission_sphere_radius = 3.0
+flatness = 0.534
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+gravity = Vector3(0, 20, 0)
+damping_max = 3.0
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_mgfmh")
+sub_emitter_keep_velocity = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mu5aj"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+shading_mode = 2
+albedo_color = Color(0.996078, 0.929412, 0.254902, 0.286275)
+emission_enabled = true
+emission = Color(0.965849, 1, 0, 1)
+emission_energy_multiplier = 16.0
+billboard_keep_scale = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_fyavd"]
+material = SubResource("StandardMaterial3D_mu5aj")
+
+[sub_resource type="FogMaterial" id="FogMaterial_g7lxy"]
+albedo = Color(0.961629, 0.449194, 0.868004, 1)
+
+[node name="portal" type="Area3D" groups=["portals"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95584, 3.78137, 21.4228)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k18a6")
+metadata/_edit_lock_ = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 30
+lifetime = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7ooy6")
+draw_pass_1 = SubResource("SphereMesh_fyavd")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0274332, -0.999624, 0, 0.999624, -0.0274332, -0.14623, 1.38801, 1.00098)
+light_color = Color(0.988783, 0.00668559, 0.672918, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_specular = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 16.4501
+spot_angle = 39.4224
+metadata/_edit_lock_ = true
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00357103, 6.60128, 0.943005)
+size = Vector3(3.8111, 18.8028, 4.55273)
+material = SubResource("FogMaterial_g7lxy")
+metadata/_edit_lock_ = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138327, 4.05169, 1.20783)
+light_color = Color(0.934474, 0.233705, 0.644752, 1)
+light_energy = 16.0
+light_indirect_energy = 13.469
+light_volumetric_fog_energy = 16.0
+light_size = 1.0
+light_specular = 9.99
+omni_range = 7.38128
+metadata/_edit_lock_ = true

@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bp8pw4tckptw5"]
+[gd_scene load_steps=19 format=3 uid="uid://bp8pw4tckptw5"]
 
 [ext_resource type="Script" path="res://levels/wild_west/level_wild_west.gd" id="1_0l6s5"]
 [ext_resource type="PackedScene" uid="uid://bfuyrelc808ay" path="res://player/hero.tscn" id="1_s54ue"]
 [ext_resource type="PackedScene" uid="uid://bo6r0dre3vjhv" path="res://levels/wild_west/enemy_indian.tscn" id="2_c4t1a"]
-[ext_resource type="PackedScene" uid="uid://co2hy0220621n" path="res://ui/fps.tscn" id="3_sxd3w"]
 [ext_resource type="PackedScene" uid="uid://p0mn4mdsomis" path="res://levels/wild_west/assets/west_home.tscn" id="4_83h40"]
 [ext_resource type="PackedScene" uid="uid://bfm5tisqx0sup" path="res://levels/wild_west/assets/stone.tscn" id="5_m2je2"]
 [ext_resource type="PackedScene" uid="uid://dtv5yh5vmdsjk" path="res://levels/wild_west/assets/home2.tscn" id="6_3nbc5"]
@@ -11,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://gf8eb1wbh5ji" path="res://assets/models/BIGHOME.glb" id="8_jj7c5"]
 [ext_resource type="PackedScene" uid="uid://c5y63gjnnfbkq" path="res://assets/models/BIGHOUSE2.glb" id="9_l7grl"]
 [ext_resource type="PackedScene" uid="uid://835dl58p0rm3" path="res://levels/wild_west/enemy_cowboy.tscn" id="10_5rrao"]
+[ext_resource type="PackedScene" uid="uid://c227cxi174sb5" path="res://ui/ui.tscn" id="11_7gckk"]
+[ext_resource type="PackedScene" uid="uid://bftafavsj3rq8" path="res://portal.tscn" id="12_1rg6j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pb1r"]
 sky_top_color = Color(0.50288, 0.556846, 0.771663, 1)
@@ -28,6 +29,10 @@ glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.647219, 0.532219, 0.318148, 1)
 fog_density = 0.005
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.981995, 0.944295, 0.542662, 1)
+volumetric_fog_length = 150.84
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aa5o"]
 albedo_color = Color(0.701988, 0.479927, 0.00889302, 1)
@@ -57,30 +62,6 @@ mesh = SubResource("BoxMesh_ru3x6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="platform"]
 shape = SubResource("BoxShape3D_cy1ap")
-
-[node name="hero" parent="." instance=ExtResource("1_s54ue")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.487, -73.8832)
-
-[node name="Skeleton3D" parent="hero/hero/Armature" index="0"]
-bones/1/position = Vector3(-1.42054, 0.203152, 0.041658)
-bones/1/rotation = Quaternion(0.703056, -0.110156, -0.698553, -0.0748489)
-bones/2/position = Vector3(1.38531, 0.203152, 0.041658)
-bones/2/rotation = Quaternion(-0.698392, -0.0748237, 0.703215, -0.110173)
-bones/3/rotation = Quaternion(0.706368, -0.0864287, -0.695575, -0.0987407)
-bones/4/scale = Vector3(1, 1, 1)
-bones/7/position = Vector3(-0.836781, -0.11326, -0.114852)
-bones/7/rotation = Quaternion(-0.707107, 0, 0.707107, 6.06011e-08)
-bones/9/rotation = Quaternion(7.51839e-08, 0.910366, -4.11384e-08, -0.413803)
-bones/9/scale = Vector3(1, 1, 1)
-
-[node name="Cube_002" parent="hero/hero/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.0638904, 0, 1.02152e-08, -5.47559e-09, -3.0534e-08, 0.119193, 0, 0.356278, 1.02152e-08, -0.853188, -0.242656, -0.364216)
-
-[node name="Cylinder" parent="hero/hero/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-4.09782e-08, 0.00093476, 0.0652726, -1.43801e-11, 0.0652725, -0.00093476, -0.0652792, -5.82077e-10, -3.72529e-08, 0.207243, 1.77439, -1.38131)
-
-[node name="AnimationPlayer" parent="hero/hero" index="2"]
-autoplay = ""
 
 [node name="enemy_indian" parent="." instance=ExtResource("2_c4t1a")]
 transform = Transform3D(-0.856663, 0, -0.515876, 0, 1, 0, 0.515876, 0, -0.856663, 18.2848, 0.477701, 29.9709)
@@ -130,10 +111,14 @@ transform = Transform3D(3.80627, 0, 1.09963, 0, 3.96193, 0, -1.09963, 0, 3.80627
 [node name="BIGHOUSE2" parent="." instance=ExtResource("9_l7grl")]
 transform = Transform3D(-3.01521, 0, 0.759382, 0, 3.10936, 0, -0.759382, 0, -3.01521, 62.6017, 0.179857, 19.6505)
 
-[node name="fps" parent="." instance=ExtResource("3_sxd3w")]
-
 [node name="enemy_cowboy" parent="." instance=ExtResource("10_5rrao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75013, 0.179854, -49.5365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1077, 0.179854, 3.25761)
 
-[editable path="hero"]
-[editable path="hero/hero"]
+[node name="UI" parent="." instance=ExtResource("11_7gckk")]
+
+[node name="portal" parent="." instance=ExtResource("12_1rg6j")]
+
+[node name="hero" parent="." instance=ExtResource("1_s54ue")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.15779, 1.66685, -76.2649)
+
+[editable path="UI"]

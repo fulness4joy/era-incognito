@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c227cxi174sb5"]
+
+[ext_resource type="Texture2D" uid="uid://cifxg0f81nom8" path="res://assets/aim_cross.png" id="1_5jbhx"]
+[ext_resource type="PackedScene" uid="uid://co2hy0220621n" path="res://ui/fps.tscn" id="2_xaljm"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="AimCross" type="Sprite2D" parent="."]
+position = Vector2(575, 325)
+texture = ExtResource("1_5jbhx")
+
+[node name="fps" parent="." instance=ExtResource("2_xaljm")]
