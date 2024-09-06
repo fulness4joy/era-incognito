@@ -10,9 +10,16 @@ const SPEED_ROTATE = 0.01
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var anim_player = $hero/AnimationPlayer
+@onready var anim_player_effects = $AnimationPlayer
 @onready var bullet_gun = load("res://bullet_gun.tscn")
 
 var current_weapen = "gun"
+# Aim
+@onready var aim_cross = $"../UI/AimCross"
+
+func _ready() -> void:
+	if aim_cross:
+		aim_cross.hide()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -36,13 +43,21 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		anim_player_effects.play("walking")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 
-
+func change_view(mode = null):
+	if %third_p_camera.current:
+		%first_p_camera.current = true
+		aim_cross.show()
+	else: 
+		%third_p_camera.current = true
+		aim_cross.hide()
+	
 func _input(event):
 	# Change game mode
 	if Input.is_action_just_released("enter_game"):
@@ -52,10 +67,7 @@ func _input(event):
 			
 	# Change View
 	if Input.is_action_just_released("change_view"):
-		if %third_p_camera.current:
-			%first_p_camera.current = true
-		else: 
-			%third_p_camera.current = true
+		change_view()
 			
 	if Input.is_action_just_pressed("front_view"):
 		%CameraFront.current = true
@@ -76,6 +88,7 @@ func _input(event):
 			get_tree().get_root().add_child(inst)
 			
 		if current_weapen == "rifle":
+			anim_player_effects.play("hut_jump")
 			if %ray_bullet_rifle.is_colliding():
 				var body = %ray_bullet_rifle.get_collider()
 				if body.is_in_group("enemy"):
@@ -84,6 +97,8 @@ func _input(event):
 	if Input.is_action_just_pressed("change_weapon"):
 		if current_weapen == "gun":
 			current_weapen = "rifle"
+			anim_player.play("idle_rifle")
 		else:
 			current_weapen = "gun"
+			anim_player.play("idle_rifle")
 	#print(current_weapen)

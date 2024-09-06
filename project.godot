@@ -31,6 +31,7 @@ folder_colors={
 "res://levels/": "red",
 "res://levels/wild_west/assets/": "green",
 "res://player/": "yellow",
+"res://shaders/": "purple",
 "res://ui/": "pink"
 }
 
