@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca8owsc3hh6m4"]
+
+[ext_resource type="Texture2D" uid="uid://cnqwy2o7itv6u" path="res://assets/era_banner.jpg" id="1_p2bso"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_um4i6"]
+[ext_resource type="StyleBox" uid="uid://cl4m2tcfxvbss" path="res://main_menu.tres" id="3_8ybeq"]
+[ext_resource type="FontFile" uid="uid://2jpwhcqqphqg" path="res://assets/fonts/Cinzel/static/Cinzel-Medium.ttf" id="4_uw6rl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pvkl"]
+bg_color = Color(0.493211, 0.0552326, 0.0552326, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.303129, 0.0179978, 0.0179978, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+shadow_color = Color(0.459268, 0.0792137, 0, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(3, 5)
+
+[sub_resource type="Theme" id="Theme_13k0a"]
+default_font = ExtResource("4_uw6rl")
+Button/colors/font_color = Color(0.90732, 0.871692, 0.561066, 1)
+Button/colors/font_focus_color = Color(0.968418, 0.959014, 0.624323, 1)
+Button/colors/font_hover_color = Color(0.975206, 0.948203, 0.64794, 1)
+Button/styles/focus = ExtResource("3_8ybeq")
+Button/styles/hover = SubResource("StyleBoxFlat_0pvkl")
+Button/styles/normal = ExtResource("3_8ybeq")
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_um4i6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.114
+anchor_top = -0.00462963
+anchor_right = 0.992188
+anchor_bottom = 0.88437
+offset_left = -246.328
+offset_right = 104.0
+offset_bottom = 206.928
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p2bso")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.5
+offset_top = -239.0
+offset_right = 100.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_13k0a")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play
+"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings
+"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Exit
+"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
