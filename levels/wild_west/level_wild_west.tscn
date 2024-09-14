@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bp8pw4tckptw5"]
+[gd_scene load_steps=22 format=3 uid="uid://bp8pw4tckptw5"]
 
 [ext_resource type="Script" path="res://levels/wild_west/level_wild_west.gd" id="1_0l6s5"]
 [ext_resource type="PackedScene" uid="uid://bfuyrelc808ay" path="res://player/hero.tscn" id="1_s54ue"]
@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://gf8eb1wbh5ji" path="res://assets/models/BIGHOME.glb" id="8_jj7c5"]
 [ext_resource type="PackedScene" uid="uid://c5y63gjnnfbkq" path="res://assets/models/BIGHOUSE2.glb" id="9_l7grl"]
 [ext_resource type="PackedScene" uid="uid://835dl58p0rm3" path="res://levels/wild_west/enemy_cowboy.tscn" id="10_5rrao"]
-[ext_resource type="PackedScene" uid="uid://c227cxi174sb5" path="res://ui/ui.tscn" id="11_7gckk"]
-[ext_resource type="PackedScene" uid="uid://bftafavsj3rq8" path="res://portal.tscn" id="12_1rg6j"]
+[ext_resource type="PackedScene" uid="uid://ciotj6jblbhrn" path="res://ui/ui.tscn" id="11_7gckk"]
+[ext_resource type="PackedScene" uid="uid://bpcfqju7wthq8" path="res://portal.tscn" id="12_1rg6j"]
+[ext_resource type="Script" path="res://levels/wild_west/gun.gd" id="13_jmtij"]
+[ext_resource type="PackedScene" uid="uid://bettg6a0ckbry" path="res://assets/models/usp.glb" id="13_kl1u2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pb1r"]
 sky_top_color = Color(0.50288, 0.556846, 0.771663, 1)
@@ -43,6 +45,9 @@ size = Vector3(200, 0.1, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cy1ap"]
 size = Vector3(200, 0.1, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmcd2"]
+size = Vector3(0.750977, 0.846191, 1)
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_0l6s5")
@@ -120,5 +125,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1077, 0.179854, 3.25761)
 
 [node name="hero" parent="." instance=ExtResource("1_s54ue")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.15779, 1.66685, -76.2649)
+
+[node name="gun" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.124294, 0, 0.992245, 0, 1, 0, -0.992245, 0, -0.124294, 4.23973, 2.38773, -67.3393)
+script = ExtResource("13_jmtij")
+
+[node name="usp" parent="gun" instance=ExtResource("13_kl1u2")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0389481, 0, -0.310894)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105448, 0.428849, 0.663551)
+shape = SubResource("BoxShape3D_qmcd2")
 
 [editable path="UI"]

@@ -15,6 +15,10 @@ run/main_scene="res://levels/wild_west/level_wild_west.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://main.gd"
+
 [display]
 
 window/vsync/vsync_mode=0

@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c227cxi174sb5"]
+[gd_scene load_steps=4 format=3 uid="uid://ciotj6jblbhrn"]
 
 [ext_resource type="Texture2D" uid="uid://cifxg0f81nom8" path="res://assets/aim_cross.png" id="1_5jbhx"]
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_y1byt"]
 [ext_resource type="PackedScene" uid="uid://co2hy0220621n" path="res://ui/fps.tscn" id="2_xaljm"]
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_y1byt")
 
 [node name="AimCross" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(575, 325)
 texture = ExtResource("1_5jbhx")
 
 [node name="fps" parent="." instance=ExtResource("2_xaljm")]
+offset_bottom = 83.0
