@@ -15,6 +15,8 @@ material = SubResource("StandardMaterial3D_nqn4e")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jlm7l"]
 
 [node name="bullet_gun" type="RigidBody3D"]
+mass = 0.01
+gravity_scale = 0.5
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_1d8nh")

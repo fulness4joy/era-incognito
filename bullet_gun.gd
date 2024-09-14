@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const speed = 50
+const speed = 100
 const damage_value = 1
 
 var time_disapear = 5

@@ -80,10 +80,10 @@ metadata/_edit_group_ = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="hero/Armature" index="0"]
-bones/1/position = Vector3(-0.147147, 0.281532, 1.7961)
-bones/1/rotation = Quaternion(0.505076, -0.489594, -0.501865, 0.503317)
-bones/2/position = Vector3(0.164718, 0.313643, 1.40855)
-bones/2/rotation = Quaternion(-0.445082, 0.556705, 0.563763, -0.417317)
+bones/1/position = Vector3(-0.147147, -0.0294345, 1.30537)
+bones/1/rotation = Quaternion(0.490957, -0.475441, -0.515685, 0.516707)
+bones/2/position = Vector3(0.135092, -0.0294345, 1.30537)
+bones/2/rotation = Quaternion(-0.507177, 0.507529, 0.499797, -0.485169)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(-0.460742, -0.242722, 0.00949692)
 bones/3/rotation = Quaternion(0.706368, -0.0864287, -0.695575, -0.0987406)
@@ -92,19 +92,21 @@ bones/4/rotation = Quaternion(-0.0147075, -0.00592741, 0.691748, 0.721965)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.708197, 0.100284, -0.693713, 0.0846339)
 bones/6/rotation = Quaternion(0.173117, -0.185248, 0.669898, 0.697818)
-bones/7/position = Vector3(-0.836781, -0.11326, -0.114852)
-bones/7/rotation = Quaternion(-0.707107, 2.51215e-15, 0.707107, 6.06011e-08)
-bones/9/position = Vector3(-0.0210483, 0.52151, 1.9397)
-bones/9/rotation = Quaternion(-0.662085, 0.248282, 0.248282, -0.662085)
+bones/7/position = Vector3(0.0238581, 0.384505, 1.64805)
+bones/7/rotation = Quaternion(-0.5, 0.5, 0.5, -0.5)
+bones/9/position = Vector3(0.169229, 0.52151, -1.38038)
+bones/9/rotation = Quaternion(7.51839e-08, 0.910366, -4.11384e-08, -0.413803)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.00251392, 0.936305, -0.00670399, -0.351114)
 bones/10/scale = Vector3(0.0587034, 0.0587034, 0.0587034)
 
 [node name="gun" parent="hero/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.0638904, 0, 1.02152e-08, -5.4756e-09, -3.0534e-08, 0.119193, 0, 0.356278, 1.02152e-08, -0.853188, -0.242656, -0.364216)
+transform = Transform3D(0.0638904, -2.12358e-08, 1.06567e-08, 5.71225e-09, 0.356278, 0, 7.61633e-09, 0, -0.119193, 0.00745072, 0.135141, 1.77745)
+visible = false
 
 [node name="rifle" parent="hero/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.0587034, 9.02219e-10, -3.72529e-09, -7.45058e-09, 0.000840571, 0.0586974, -5.49713e-10, 0.0586974, -0.000840572, -0.0219774, 0.559523, 3.54678)
+transform = Transform3D(3.91155e-08, 0.000840598, 0.0586974, 4.17372e-11, 0.0586974, -0.000840598, -0.0587034, 6.40284e-10, 4.47035e-08, 0.207243, 2.12859, -1.38131)
+visible = false
 
 [node name="AnimationPlayer" parent="hero" index="2"]
 autoplay = "idle"
